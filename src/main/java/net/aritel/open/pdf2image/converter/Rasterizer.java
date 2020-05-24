@@ -25,4 +25,25 @@ public class Rasterizer {
 			ImageIO.write(bi, "JPEG", out);
 		}
 	}
+	
+	/**
+	 * PDFファイルをページ分割して出力ストリームに書き出します。
+	 * @param in PDFファイルの入力ストリーム
+	 * @param op ページごとの出力ストリームのプロバイダ
+	 * @param dpi 画像化のDPI
+	 * @param formatName 画像化のフォーマット
+	 * @throws IOException PDFが読めなかったり、画像出力でエラーが起きた場合
+	 */
+	public void resterize(InputStream in, OutputStreamProvider op, int dpi, String formatName) throws IOException {
+		try (PDDocument doc = PDDocument.load(in)) {
+			int numberOfPages = doc.getNumberOfPages();
+			PDFRenderer renderer = new PDFRenderer(doc);
+			for (int i = 0; i < numberOfPages; i++) {
+				BufferedImage bi = renderer.renderImageWithDPI(i, dpi, ImageType.RGB);
+				try (OutputStream os = op.get(i)) {
+					ImageIO.write(bi, formatName, os);
+				}
+			}
+		}
+	}
 }
