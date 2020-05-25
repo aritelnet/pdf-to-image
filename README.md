@@ -8,6 +8,6 @@ PdfBox をラップした簡単なライブラリです。
 ## Example
 
 ```
-> java net.aritel.open.pdf2image.Pdf2ImageExecutable
+> java -jar pdf-to-image-0.0.1.jar <InputPdfPath> <OutputDir> [<dpi>]
 ```
 
