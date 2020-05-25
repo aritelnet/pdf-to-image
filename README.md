@@ -11,3 +11,4 @@ PdfBox をラップした簡単なライブラリです。
 > java -jar pdf-to-image-0.0.1.jar <InputPdfPath> <OutputDir> [<dpi>]
 ```
 
+出力フォルダにPNG形式のファイルが格納されます。コンソールにはJSONで生成されたファイル名が出力されますので、jqコマンドなどで解析したら後続処理に使えそうです。
