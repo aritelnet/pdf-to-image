@@ -22,11 +22,34 @@ public class DecodePdfTask implements Callable<File[]> {
 	private File pdfFile;
 	private File outputDir;
 	private int dpi;
+	private FileType fileType = FileType.PNG;
+	
+	public enum FileType {
+		PNG("png", "png"),
+		JPEG("jpeg", "jpg");
+		String formatName;
+		String fileExtension;
+		public String getFormatName() {
+			return formatName;
+		}
+		public String getFileExtension() {
+			return fileExtension;
+		}
+		FileType(String formatName, String fileExtension) {
+			this.formatName = formatName;
+			this.fileExtension = fileExtension;
+		}
+	}
 	
 	public DecodePdfTask(File pdfFile, File outputDir, int dpi) {
 		this.pdfFile = pdfFile;
 		this.dpi = dpi;
 		this.outputDir = outputDir;
+	}
+	
+	public DecodePdfTask(File pdfFile, File outputDir, int dpi, FileType fileType) {
+		this(pdfFile, outputDir, dpi);
+		this.fileType = fileType;
 	}
 	
 	@Override
@@ -40,10 +63,11 @@ public class DecodePdfTask implements Callable<File[]> {
 				ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
 			int i;
 			Iterator<BufferedImage> itr;
+			FileType ft = this.fileType;
 			for (i = 0, itr = decorder.iterator(); itr.hasNext(); i++) {
 				baos.reset();
-				ImageIO.write(itr.next(), "png", baos);
-				File file = new File(outputDir, fileNameWithoutExtension + "_" + i + ".png");
+				ImageIO.write(itr.next(), ft.getFormatName(), baos);
+				File file = new File(outputDir, fileNameWithoutExtension + "_" + i + "." + ft.getFileExtension());
 				Files.write(file.toPath(), baos.toByteArray());
 				fileList.add(file);
 			}
