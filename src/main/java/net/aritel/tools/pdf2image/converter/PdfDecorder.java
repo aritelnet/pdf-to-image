@@ -13,9 +13,9 @@ import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
 
 /**
- * PDFƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚İAƒy[ƒW‚²‚Æ‚Ì“Ç‚İæ‚è‚ğ‰Â”\‚É‚·‚éƒCƒeƒŒ[ƒ^‚ğ’ñ‹Ÿ‚µ‚Ü‚·B
+ * PDFãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã¿ã€ãƒšãƒ¼ã‚¸ã”ã¨ã®èª­ã¿å–ã‚Šã‚’å¯èƒ½ã«ã™ã‚‹ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿ã‚’æä¾›ã—ã¾ã™ã€‚
  * <p>
- * “ü—Íƒtƒ@ƒCƒ‹‚ÆDPI‚ğw’è‚µ‚ÄA‚±‚ÌƒNƒ‰ƒX‚ğ for •¶‚Å‰ñ‚·‚±‚Æ‚ÅBufferedImage‚ğæ“¾‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+ * å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã¨DPIã‚’æŒ‡å®šã—ã¦ã€ã“ã®ã‚¯ãƒ©ã‚¹ã‚’ for æ–‡ã§å›ã™ã“ã¨ã§BufferedImageã‚’å–å¾—ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
  * 
  * @author aritelnet
  *
@@ -42,12 +42,12 @@ public class PdfDecorder implements Iterable<BufferedImage>, Closeable {
 	}
 	
 	/**
-	 * PDFƒtƒ@ƒCƒ‹‚ÌƒCƒ[ƒW‚ğ•Ô‚·ƒCƒeƒŒ[ƒ^‚ğ¶¬‚µ‚Ü‚·B
+	 * PDFãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’è¿”ã™ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	 */
 	@Override
 	public Iterator<BufferedImage> iterator() {
 		return new Iterator<BufferedImage>() {
-			/** Œ»İ‚ÌƒCƒ“ƒfƒbƒNƒX */
+			/** ç¾åœ¨ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ */
 			int pageIndex = 0;
 			@Override
 			public boolean hasNext() {
@@ -67,17 +67,17 @@ public class PdfDecorder implements Iterable<BufferedImage>, Closeable {
 	}
 	
 	/**
-	 * w’è‚³‚ê‚½ƒy[ƒW‚Ì‰æ‘œ‚ğ“Ç‚İæ‚è‚Ü‚·B
-	 * @param pageIndex 0‚©‚çn‚Ü‚éƒy[ƒW”Ô†
-	 * @return “Ç‚İæ‚Á‚½BufferedImage
-	 * @throws IOException PDFƒtƒ@ƒCƒ‹‚ª“Ç‚İæ‚ê‚È‚¢ê‡
+	 * æŒ‡å®šã•ã‚ŒãŸãƒšãƒ¼ã‚¸ã®ç”»åƒã‚’èª­ã¿å–ã‚Šã¾ã™ã€‚
+	 * @param pageIndex 0ã‹ã‚‰å§‹ã¾ã‚‹ãƒšãƒ¼ã‚¸ç•ªå·
+	 * @return èª­ã¿å–ã£ãŸBufferedImage
+	 * @throws IOException PDFãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿å–ã‚Œãªã„å ´åˆ
 	 */
 	public BufferedImage get(int pageIndex) throws IOException {
 		return renderer.renderImageWithDPI(pageIndex, dpi, ImageType.RGB);
 	}
 
 	/**
-	 * PDF‚Ìƒy[ƒW”‚ğ•Ô‚µ‚Ü‚·B
+	 * PDFã®ãƒšãƒ¼ã‚¸æ•°ã‚’è¿”ã—ã¾ã™ã€‚
 	 * @return
 	 */
 	public int getNumberOfPages() {
@@ -85,7 +85,7 @@ public class PdfDecorder implements Iterable<BufferedImage>, Closeable {
 	}
 
 	/**
-	 * PDFƒtƒ@ƒCƒ‹‚ğ•Â‚¶‚Ü‚·B
+	 * PDFãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‰ã˜ã¾ã™ã€‚
 	 */
 	@Override
 	public void close() throws IOException {

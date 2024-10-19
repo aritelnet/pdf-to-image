@@ -13,7 +13,7 @@ import java.util.concurrent.Callable;
 import javax.imageio.ImageIO;
 
 /**
- * PDFƒtƒ@ƒCƒ‹‚ğƒ[ƒJƒ‹ƒXƒgƒŒ[ƒW‚ÉPNGŒ`®‚Å‘‚«‚¾‚µ‚Ü‚·B‚±‚ÌƒNƒ‰ƒX‚Íƒ}ƒ‹ƒ`ƒXƒŒƒbƒh‚ÅÀs‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B
+ * PDFãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ã‚«ãƒ«ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ã«PNGå½¢å¼ã§æ›¸ãã ã—ã¾ã™ã€‚ã“ã®ã‚¯ãƒ©ã‚¹ã¯ãƒãƒ«ãƒã‚¹ãƒ¬ãƒƒãƒ‰ã§å®Ÿè¡Œã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚
  * 
  * @author aritelnet
  */
@@ -54,10 +54,10 @@ public class DecodePdfTask implements Callable<File[]> {
 	
 	@Override
 	public File[] call() throws IOException {
-		// PDF‚Ìƒtƒ@ƒCƒ‹–¼‚ğæ“¾
+		// PDFã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’å–å¾—
 		String fileNameWithoutExtension = getFileNameWithoutExtension(pdfFile.getName());
 		
-		// PDFƒtƒ@ƒCƒ‹‚Ì‰æ‘œ‰»
+		// PDFãƒ•ã‚¡ã‚¤ãƒ«ã®ç”»åƒåŒ–
 		List<File> fileList = new ArrayList<>();
 		try (PdfDecorder decorder = new PdfDecorder(pdfFile, dpi);
 				ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
@@ -76,10 +76,10 @@ public class DecodePdfTask implements Callable<File[]> {
 	}
 
 	/**
-	 * ƒtƒ@ƒCƒ‹–¼‚©‚çŠg’£q‚ğ‚Ì‚¼‚­•”•ª‚ğ•Ô‚µ‚Ü‚·BŠg’£q‚ª–³‚¢ê‡‚ÍA‚»‚Ì‚·‚×‚Ä‚ğ•Ô‚µ‚Ü‚·B
+	 * ãƒ•ã‚¡ã‚¤ãƒ«åã‹ã‚‰æ‹¡å¼µå­ã‚’ã®ããéƒ¨åˆ†ã‚’è¿”ã—ã¾ã™ã€‚æ‹¡å¼µå­ãŒç„¡ã„å ´åˆã¯ã€ãã®ã™ã¹ã¦ã‚’è¿”ã—ã¾ã™ã€‚
 	 * 
-	 * @param name ƒtƒ@ƒCƒ‹–¼
-	 * @return Šg’£q‚ğ‚Ì‚¼‚¢‚½ƒtƒ@ƒCƒ‹–¼
+	 * @param name ãƒ•ã‚¡ã‚¤ãƒ«å
+	 * @return æ‹¡å¼µå­ã‚’ã®ãã„ãŸãƒ•ã‚¡ã‚¤ãƒ«å
 	 */
 	private static String getFileNameWithoutExtension(String name) {
 		int i = name.lastIndexOf('.');

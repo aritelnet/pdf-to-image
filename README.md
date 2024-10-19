@@ -2,8 +2,8 @@
 Convert PDF files to image format.
 
 ## What's this
-PDFƒtƒ@ƒCƒ‹‚âƒoƒCƒiƒŠ‚©‚çA‰æ‘œƒtƒ@ƒCƒ‹‚âBufferedImage‚ð¶¬‚µ‚Ü‚·B
-PdfBox ‚ðƒ‰ƒbƒv‚µ‚½ŠÈ’P‚Èƒ‰ƒCƒuƒ‰ƒŠ‚Å‚·B
+PDFãƒ•ã‚¡ã‚¤ãƒ«ã‚„ãƒã‚¤ãƒŠãƒªã‹ã‚‰ã€ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ã‚„BufferedImageã‚’ç”Ÿæˆã—ã¾ã™ã€‚
+PdfBox ã‚’ãƒ©ãƒƒãƒ—ã—ãŸç°¡å˜ãªãƒ©ã‚¤ãƒ–ãƒ©ãƒªã§ã™ã€‚
 
 ## Example
 
@@ -11,5 +11,5 @@ PdfBox ‚ðƒ‰ƒbƒv‚µ‚½ŠÈ’P‚Èƒ‰ƒCƒuƒ‰ƒŠ‚Å‚·B
 > java -jar pdf-to-image-0.0.3.jar <InputPdfPath> <OutputDir> [<dpi>] [<formatType>]
 ```
 
-o—ÍƒtƒHƒ‹ƒ_‚ÉPNGŒ`Ž®‚Ìƒtƒ@ƒCƒ‹‚ªŠi”[‚³‚ê‚Ü‚·BƒRƒ“ƒ\[ƒ‹‚É‚ÍJSON‚Å¶¬‚³‚ê‚½ƒtƒ@ƒCƒ‹–¼‚ªo—Í‚³‚ê‚Ü‚·‚Ì‚ÅAjqƒRƒ}ƒ“ƒh‚È‚Ç‚Å‰ðÍ‚µ‚½‚çŒã‘±ˆ—‚ÉŽg‚¦‚»‚¤‚Å‚·B
-formatType ‚É‚Í PNG ‚© JPEG ‚ðŽw’è‚Å‚«‚Ü‚·B
+å‡ºåŠ›ãƒ•ã‚©ãƒ«ãƒ€ã«PNGå½¢å¼ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒæ ¼ç´ã•ã‚Œã¾ã™ã€‚ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«ã¯JSONã§ç”Ÿæˆã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«åãŒå‡ºåŠ›ã•ã‚Œã¾ã™ã®ã§ã€jqã‚³ãƒžãƒ³ãƒ‰ãªã©ã§è§£æžã—ãŸã‚‰å¾Œç¶šå‡¦ç†ã«ä½¿ãˆãã†ã§ã™ã€‚
+formatType ã«ã¯ PNG ã‹ JPEG ã‚’æŒ‡å®šã§ãã¾ã™ã€‚

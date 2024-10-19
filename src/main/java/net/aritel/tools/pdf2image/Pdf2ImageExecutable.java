@@ -11,7 +11,7 @@ import net.aritel.tools.pdf2image.converter.DecodePdfTask;
 import net.aritel.tools.pdf2image.converter.DecodePdfTask.FileType;
 
 /**
- * PDF ƒtƒ@ƒCƒ‹‚©‚ç‰æ‘œ‚ð¶¬‚·‚éƒvƒƒOƒ‰ƒ€‚ÌƒGƒ“ƒgƒŠƒ|ƒCƒ“ƒg‚Å‚·B
+ * PDF ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ç”»åƒã‚’ç”Ÿæˆã™ã‚‹ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®ã‚¨ãƒ³ãƒˆãƒªãƒã‚¤ãƒ³ãƒˆã§ã™ã€‚
  * 
  * @author aritelnet
  */
@@ -58,7 +58,7 @@ public class Pdf2ImageExecutable {
 			return;
 		}
 		
-		// PDFƒtƒ@ƒCƒ‹‚Ì‰æ‘œ‰»
+		// PDFãƒ•ã‚¡ã‚¤ãƒ«ã®ç”»åƒåŒ–
 		try {
 			DecodePdfTask task = new DecodePdfTask(inputPdfPath, outputDir, dpi, fileType);
 			for (File f : task.call()) {
