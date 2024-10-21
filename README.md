@@ -5,6 +5,8 @@ Convert PDF files to image format.
 PDFファイルやバイナリから、画像ファイルやBufferedImageを生成します。
 PdfBox をラップした簡単なライブラリです。
 
+API Gateway + AWS Lambda としてデプロイすることで、API サービスとして利用することができます。
+
 ## Example
 
 ```
