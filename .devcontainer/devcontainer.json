@@ -1,0 +1,28 @@
+{
+    "name": "pdf-to-image",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/java:1": {
+            "version": "none",
+            "installGradle": "true",
+            "installMaven": "true"
+        },
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "latest"
+        }
+    },
+    "mounts": [
+        "source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "donjayamanne.githistory",
+                "github.vscode-github-actions"
+            ]
+        }
+    }
+}
