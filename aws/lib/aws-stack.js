@@ -22,11 +22,20 @@ class AwsStack extends Stack {
     //   visibilityTimeout: Duration.seconds(300)
     // });
 
+    // ポリシーの作成
+    const s3Policy = new iam.ManagedPolicy(this, 'LambdaS3Policy', {
+      statements: [new iam.PolicyStatement({
+        actions: ['s3:PutObject'],
+        resources: ['*']
+      })]
+    });
+
     // Lambda 実行ロールの定義
     const lambdaExecutionRole = new iam.Role(this, 'LambdaExecutionRole', {
       assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com'),
       managedPolicies: [
         iam.ManagedPolicy.fromAwsManagedPolicyName('service-role/AWSLambdaBasicExecutionRole'),
+        s3Policy
       ],
     });
 

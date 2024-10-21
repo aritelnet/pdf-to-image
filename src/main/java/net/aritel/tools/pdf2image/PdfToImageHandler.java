@@ -17,12 +17,18 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
+import com.google.gson.Gson;
 
 import net.aritel.tools.pdf2image.converter.DecodePdfTask.FileType;
 import net.aritel.tools.pdf2image.converter.PdfDecorder;
+import software.amazon.awssdk.core.sync.RequestBody;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 public class PdfToImageHandler implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse> {
-
+    public static class ResultJson {
+		public String message;
+	}
     @Override
     public APIGatewayV2HTTPResponse handleRequest(APIGatewayV2HTTPEvent event, Context context) {
         // ロガーを定義
@@ -61,6 +67,15 @@ public class PdfToImageHandler implements RequestHandler<APIGatewayV2HTTPEvent, 
         } catch (Exception e) {
             fileType = FileType.PNG;
         }
+        String bucketName;
+        String objectKey;
+        try {
+            bucketName = event.getHeaders().get("x-export-s3-bucket");
+            objectKey = event.getHeaders().get("x-export-s3-key");
+        } catch (Exception e) {
+            bucketName = null;
+            objectKey = null;
+        }
         // PDFファイルの画像化
         byte[] zipBytes = null;
         try {
@@ -87,6 +102,21 @@ public class PdfToImageHandler implements RequestHandler<APIGatewayV2HTTPEvent, 
             APIGatewayV2HTTPResponse response = new APIGatewayV2HTTPResponse();
             response.setStatusCode(400);
             response.setBody("Error");
+            return response;
+        }
+        // S3 に保存
+        if (bucketName != null) {
+            S3Client s3 = S3Client.builder().build();
+            PutObjectRequest putOb = PutObjectRequest.builder()
+                        .bucket(bucketName)
+                        .key(objectKey)
+                        .build();
+            s3.putObject(putOb, RequestBody.fromBytes(zipBytes));
+            APIGatewayV2HTTPResponse response = new APIGatewayV2HTTPResponse();
+            response.setStatusCode(200);
+            ResultJson rj = new ResultJson();
+            rj.message = "Success to save s3.";
+            response.setBody(new Gson().toJson(rj));
             return response;
         }
 
