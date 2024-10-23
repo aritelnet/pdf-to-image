@@ -14,6 +14,8 @@ API Gateway + AWS Lambda としてデプロイすることで、API サービス
 - ホームディレクトリに github の鍵（~/.ssh）と、AWS のクレデンシャル（ ~/.aws）が必要です。
     - これらのディレクトリがないと devcontainer の起動に失敗します。
 
+### Gitクローンとデプロイ
+
 - VSCode (devcontainer) で開発とデプロイができます。
 
 ```bash
@@ -47,6 +49,11 @@ CDKにより、通常は、代表的なものとして以下のリソースが�
     - Lambda 関数
 - PdfToImageHttpApi (AWS::ApiGatewayV2::Api)
     - API Gateway (HTTP API)
+
+### カスタムのフォントについて
+- AWS Lambda ではランタイムに日本語フォントがないため、このままでは埋め込まれていない日本語テキストは描画されません。
+- 以下のソースディレクトリにフォントファイルを含めてデプロイすることで、PdfBoxがフォントファイルを認識します。
+    - `./src/main/java/.fonts`
 
 ## Example
 - curl コマンドを使ってリクエストを送る例です。
